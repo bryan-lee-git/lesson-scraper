@@ -59,7 +59,7 @@ app.get("/w3scrape", (req, res) => {
 // w3Schools MongoDB Data Retrieval Route
 // =======
 
-app.get("/w3/", (req, res) => {
+app.get("/w3", (req, res) => {
   db.w3Schools.find().then(dbW3Schools => {
     let hbsObject = { w3: dbW3Schools }
     res.render("w3schools", hbsObject);
@@ -109,7 +109,7 @@ app.get("/coursera-scrape", (req, res) => {
 // Coursera MongoDB Data Retrieval Route
 // =======
 
-app.get("/coursera/", (req, res) => {
+app.get("/coursera", (req, res) => {
   db.Coursera.find().then(dbCoursera => {
     let hbsObject = { coursera: dbCoursera }
     res.render("coursera", hbsObject);
@@ -118,7 +118,7 @@ app.get("/coursera/", (req, res) => {
   });
 });
 
-// Retrieve w3Schools lesson + its note by id
+// Retrieve Coursera lesson + its note by id
 // =======
 
 app.get("/coursera/:id", (req, res) => {
@@ -126,6 +126,56 @@ app.get("/coursera/:id", (req, res) => {
     { _id: req.params.id }
   ).populate("note").then(dbCoursera => {
     res.json(dbCoursera);
+  }).catch(err => {
+    res.json(err);
+  });
+});
+
+// Medium/Programming MongoDB Data Scrape Route
+// =======
+
+app.get("/medium-scrape", (req, res) => {
+  axios.get("https://medium.com/topic/programming").then(function(response) {
+    var $ = cheerio.load(response.data);
+    $(".dv.dw").each(function(i, element) {
+      var title = $(element).children("h3").text();
+      var link = $(element).children("h3").children("a").attr("href");
+      var blurb = $(element).children(".eb.c").children("p").children("a").text();
+      var result = {
+        title,
+        link: `https://medium.com${link}`,
+        blurb
+      };
+      db.Medium.create(result).then(dbMedium => {
+        console.log(dbMedium);
+      }).catch(err => {
+        console.log(err);
+      });
+    });
+    res.send("Scrape Complete");
+  });
+});
+
+// Medium/Programming MongoDB Data Retrieval Route
+// =======
+
+app.get("/medium", (req, res) => {
+  db.Medium.find().then(dbMedium => {
+    let hbsObject = { medium: dbMedium }
+    res.render("medium", hbsObject);
+  }).catch(err => {
+    res.json(err);
+  });
+});
+
+// Retrieve Medium/Programming post + its note by id
+// =======
+
+app.get("/medium/:id", (req, res) => {
+  db.Medium.find(
+    { _id: req.params.id }
+  ).populate("note").then(dbMedium => {
+    res.json(dbMedium);
   }).catch(err => {
     res.json(err);
   });
