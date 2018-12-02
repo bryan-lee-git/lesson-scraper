@@ -181,6 +181,108 @@ app.get("/medium/:id", (req, res) => {
   });
 });
 
+// CodeCademy MongoDB Data Scrape Route
+// =======
+
+app.get("/code-cademy-scrape", (req, res) => {
+  axios.get("https://www.codecademy.com/catalog/subject/all").then(function(response) {
+    var $ = cheerio.load(response.data);
+    $(".standardPadding__2Qfs_mGV0Kt7Y3sHTOhHtm").each(function(i, element) {
+      var title = $(element).children("h3").text();
+      var description = $(element).children(".description__HE5KMDlhAdQy_Ka7F01wq, .description__npYO7MgT0O4SxUnbGreZu").text();
+      var link = $(element).parents("a").attr("href");
+      var result = {
+        title,
+        description,
+        link: `https://www.codecademy.com${link}`
+      };
+      db.CodeCademy.create(result).then(dbCodeCademy => {
+        console.log(dbCodeCademy);
+      }).catch(err => {
+        console.log(err);
+      });
+    });
+    res.send("Scrape Complete");
+  });
+});
+
+// CodeCademy MongoDB Data Retrieval Route
+// =======
+
+app.get("/code-cademy", (req, res) => {
+  db.CodeCademy.find().then(dbCodeCademy => {
+    let hbsObject = { codeCademy: dbCodeCademy }
+    res.render("code-cademy", hbsObject);
+  }).catch(err => {
+    res.json(err);
+  });
+});
+
+// Retrieve CodeCademy post + its note by id
+// =======
+
+app.get("/code-cademy/:id", (req, res) => {
+  db.CodeCademy.find(
+    { _id: req.params.id }
+  ).populate("note").then(dbCodeCademy => {
+    res.json(dbCodeCademy);
+  }).catch(err => {
+    res.json(err);
+  });
+});
+
+// "71 Free Code Learning Resources" MongoDB Data Scrape Route
+// =======
+
+app.get("/learn-scrape", (req, res) => {
+  axios.get("https://learntocodewith.me/posts/code-for-free/").then(function(response) {
+    var $ = cheerio.load(response.data);
+    $("p").each(function(i, element) {
+      var title = $(element).children().children("a").text();
+      var description = $(element).next("p").text();
+      var link = $(element).children().children("a").attr("href");
+      if (title.length > 0 && title !== "Head back to the table of contents »") {
+        var result = {
+          title,
+          description,
+          link
+        };
+        db.Learn.create(result).then(dbLearn => {
+          console.log(dbLearn);
+        }).catch(err => {
+          console.log(err);
+        });
+      }
+    });
+    res.send("Scrape Complete");
+  });
+});
+
+// "71 Free Code Learning Resources" MongoDB Data Retrieval Route
+// =======
+
+app.get("/learn", (req, res) => {
+  db.Learn.find().then(dbLearn => {
+    let hbsObject = { learn: dbLearn }
+    res.render("learn", hbsObject);
+  }).catch(err => {
+    res.json(err);
+  });
+});
+
+// Retrieve CodeCademy post + its note by id
+// =======
+
+app.get("/learn/:id", (req, res) => {
+  db.Learn.find(
+    { _id: req.params.id }
+  ).populate("note").then(dbLearn => {
+    res.json(dbLearn);
+  }).catch(err => {
+    res.json(err);
+  });
+});
+
 /* -/-/-/-/-/-/-/-/-/-/-/-/- */
 
 // Listen on port 3000

@@ -2,6 +2,8 @@ $(document).ready(function () {
     $('#w3-table').DataTable();
     $('#coursera-table').DataTable();
     $('#medium-table').DataTable();
+    $('#code-cademy-table').DataTable();
+    $('#learn-table').DataTable();
 });
 
 var swiper = new Swiper('.swiper-container', {
