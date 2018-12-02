@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css?family=Inconsolata');
+
+* {
+    font-family: 'Inconsolata', monospace;
+}
+
+#nav-secondary {
+    overflow: hidden;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.btn {
+    font-family: 'Inconsolata', monospace;
+    box-sizing: border-box;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 3px;
+}
+
+.landing-btn {
+    height: 225px;
+}
+
+.landing-img {
+    margin: 10px auto 10px auto;
+    display: block;
+}
+
+table {
+    font-size: 12px;
+}

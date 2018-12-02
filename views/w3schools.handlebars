@@ -1,0 +1,26 @@
+<main>
+    <div class="container center-align">
+        <div class="row">
+            <br />
+            <h3 id="landing-title" class="col s12 page-title">Lessons from W3 Schools</h3>
+        </div>
+        <div class="col s12 m6">
+            <table class="responsive-table centered highlight" id="w3-table">
+                <thead>
+                    <th>Section</th>
+                    <th>Lesson (Click to Navigate to Lesson)</th>
+                    <th>Notes</th>
+                </thead>
+                <tbody>
+                    {{#each w3}}
+                        <tr>
+                            <td>{{section}}</td>
+                            <td><a href="{{link}}">{{title}}</a></td>
+                            <td><button class="btn">Notes</button></td>
+                        </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>

@@ -1,0 +1,26 @@
+<main>
+    <div class="container center-align">
+        <div class="row">
+            <br />
+            <h3 id="landing-title" class="col s12 page-title">Lessons from Coursera</h3>
+        </div>
+        <div class="col s12 m6">
+            <table class="responsive-table centered highlight" id="coursera-table">
+                <thead>
+                    <th>Title (Click to Navigate to Lesson)</th>
+                    <th>Description</th>
+                    <th>Notes</th>
+                </thead>
+                <tbody>
+                    {{#each coursera}}
+                        <tr>
+                            <td><a href="{{link}}">{{title}}</a></td>
+                            <td>{{description}}</a></td>
+                            <td><button class="btn">Notes</button></td>
+                        </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>
