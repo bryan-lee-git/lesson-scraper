@@ -270,7 +270,7 @@ app.get("/learn", (req, res) => {
   });
 });
 
-// Retrieve CodeCademy post + its note by id
+// Retrieve "71 Free Code Learning Resources" post + its note by id
 // =======
 
 app.get("/learn/:id", (req, res) => {
@@ -278,6 +278,54 @@ app.get("/learn/:id", (req, res) => {
     { _id: req.params.id }
   ).populate("note").then(dbLearn => {
     res.json(dbLearn);
+  }).catch(err => {
+    res.json(err);
+  });
+});
+
+// YouTube Search MongoDB Data Scrape Route
+// =======
+
+app.get("/youtube-scrape", (req, res) => {
+  axios.get("https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&q=learn+coding&type=video&videoEmbeddable=true&key=AIzaSyDEN3-Xo9I-Ycjy-cTlOygMnHB3p5ZhVg4").then(function(response) {
+    for (let i = 0; i < response.data.items.length; i++) {
+      let result = {
+        title: response.data.items[i].snippet.title,
+        channel: response.data.items[i].snippet.channelTitle,
+        description: response.data.items[i].snippet.description,
+        videoId: response.data.items[i].id.videoId,
+        link: `https://www.youtube.com/watch?v=${response.data.items[i].id.videoId}`
+      };
+      db.CodeVideos.create(result).then(dbCodeVideos => {
+        console.log(dbCodeVideos);
+      }).catch(err => {
+        console.log(err);
+      });
+    }
+    res.send("Scrape Complete");
+  });
+});
+
+// Code Videos MongoDB Data Retrieval Route
+// =======
+
+app.get("/code-videos", (req, res) => {
+  db.CodeVideos.find().then(dbCodeVideos => {
+    let hbsObject = { codeVideos: dbCodeVideos }
+    res.render("code-videos", hbsObject);
+  }).catch(err => {
+    res.json(err);
+  });
+});
+
+// Retrieve Code Video + its note by id
+// =======
+
+app.get("/code-videos/:id", (req, res) => {
+  db.CodeVideos.find(
+    { _id: req.params.id }
+  ).populate("note").then(dbCodeVideos => {
+    res.json(dbCodeVideos);
   }).catch(err => {
     res.json(err);
   });

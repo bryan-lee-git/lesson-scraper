@@ -4,5 +4,6 @@ module.exports = {
     Medium: require("./Medium"),
     CodeCademy: require("./CodeCademy"),
     Learn: require("./Learn"),
+    CodeVideos: require("./CodeVideos"),
     Note: require("./Note")
 };

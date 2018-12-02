@@ -4,6 +4,7 @@ $(document).ready(function () {
     $('#medium-table').DataTable();
     $('#code-cademy-table').DataTable();
     $('#learn-table').DataTable();
+    $('#videos-table').DataTable();
 });
 
 var swiper = new Swiper('.swiper-container', {
@@ -12,6 +13,6 @@ var swiper = new Swiper('.swiper-container', {
         dynamicBullets: true,
     },
     autoplay: {
-        delay: 4000,
+        delay: 5000,
     }
 });

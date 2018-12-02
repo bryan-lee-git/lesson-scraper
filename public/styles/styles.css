@@ -75,6 +75,10 @@ h1 {
     display: block;
 }
 
+.slider-img {
+    margin-bottom: 20px;
+}
+
 table {
     padding: 30px;
     border-radius: 8px;
@@ -84,4 +88,19 @@ table {
 
 .dataTables_wrapper {
     margin-bottom: 80px;
+}
+
+@media screen and (max-width: 400px) {
+    h1 {
+        font-size: 30px;
+    }
+    h5 {
+        font-size: 20px;
+    }
+    #landing-btn-row {
+        margin-bottom: 100px;
+    }
+    a.brand-logo {
+        font-size: 15px;
+    }
 }

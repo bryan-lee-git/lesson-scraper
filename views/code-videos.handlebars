@@ -4,20 +4,22 @@
             <br />
             <br />
             <br />
-            <a href="https://medium.com/topic/programming" target="_blank"><img class="col s12 m8 offset-m2" src="/img/medium-swiper.png" alt=""></a>
+            <a href="https://www.youtube.com/" target="_blank"><img class="col s12 m8 offset-m2" src="/img/youtube-swiper.png" alt=""></a>
         </div>
         <div class="col s12 m6">
-            <table class="responsive-table centered highlight z-depth-1 blue lighten-5" id="medium-table">
+            <table class="responsive-table centered highlight z-depth-1 blue lighten-5" id="videos-table">
                 <thead>
-                    <th>Title (Click to Navigate to Post)</th>
-                    <th>Blurb</th>
+                    <th>Title (Click to Watch the Video)</th>
+                    <th>Channel</th>
+                    <th>Description</th>
                     <th>Notes</th>
                 </thead>
                 <tbody>
-                    {{#each medium}}
+                    {{#each codeVideos}}
                         <tr>
                             <td><a href="{{link}}" target="_blank">{{title}}</a></td>
-                            <td>{{blurb}}</a></td>
+                            <td>{{channel}}</a></td>
+                            <td>{{description}}</a></td>
                             <td><button class="btn">Notes</button></td>
                         </tr>
                     {{/each}}
