@@ -27,7 +27,7 @@ h1 {
     font-weight: bolder;
     box-sizing: border-box;
     border: 1px solid rgba(255, 255, 255, 0.5);
-    border-radius: 3px;
+    border-radius: 8px;
 }
 
 .btn:hover, .btn:active, .btn:focus  {
@@ -76,6 +76,12 @@ h1 {
 }
 
 table {
+    padding: 30px;
+    border-radius: 8px;
     font-size: 12px;
-    margin-bottom: 100px;
+    margin-bottom: 40px;
+}
+
+.dataTables_wrapper {
+    margin-bottom: 80px;
 }
