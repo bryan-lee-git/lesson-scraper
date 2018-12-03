@@ -6,19 +6,23 @@
             <br />
             <a href="https://medium.com/topic/programming" target="_blank"><img class="col s12 m8 offset-m2" src="/img/medium-swiper.png" alt=""></a>
         </div>
+        <br />
+        <br />
         <div class="col s12 m6">
             <table class="responsive-table centered highlight z-depth-1 blue lighten-5" id="medium-table">
                 <thead>
-                    <th>Title (Click to Navigate to Post)</th>
+                    <th>Title</th>
                     <th>Blurb</th>
+                    <th>Open</th>
                     <th>Notes</th>
                 </thead>
                 <tbody>
                     {{#each medium}}
                         <tr>
                             <td><a href="{{link}}" target="_blank">{{title}}</a></td>
-                            <td>{{blurb}}</a></td>
-                            <td><button class="btn">Notes</button></td>
+                            <td>{{blurb}}</td>
+                            <td><a href="{{link}}" target="_blank"><button class="btn blue lighten-2">Open</button></a></td>
+                            <td data-id="{{_id}}" class="notes-btn modal-trigger" href="#notes"><button class="btn">Notes</button></td>
                         </tr>
                     {{/each}}
                 </tbody>
@@ -26,3 +30,5 @@
         </div>
     </div>
 </main>
+{{> Modal/notes-block}}
+<script src="/js/medium.js"></script>

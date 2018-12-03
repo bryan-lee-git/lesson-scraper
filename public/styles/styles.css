@@ -10,6 +10,10 @@ h1 {
     margin-top: -10px;
 }
 
+a:hover {
+    text-decoration: underline;
+}
+
 .navbar {
     z-index: 10;
 }
@@ -30,7 +34,9 @@ h1 {
     border-radius: 8px;
 }
 
-.btn:hover, .btn:active, .btn:focus  {
+.btn:hover,
+.btn:active,
+.btn:focus {
     background-color: #1976d2;
 }
 
@@ -83,23 +89,77 @@ table {
     padding: 30px;
     border-radius: 8px;
     font-size: 12px;
-    margin-bottom: 40px;
+}
+
+.modal {
+    border-radius: 8px;
+}
+
+.dataTables_wrapper {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    font-size: 12px;
+    margin-bottom: 100px;
+}
+
+.dataTables_filter {
+    margin-bottom: 10px;
 }
 
 .dataTables_wrapper {
     margin-bottom: 80px;
 }
 
+#notes {
+    padding: 30px;
+}
+
+::-webkit-input-placeholder {
+    color: #1976d2;
+    opacity: 1.0 !important;
+}
+
+.input-field label {
+    color: #1976d2 !important;
+}
+
+.input-field input:focus+label {
+    color: #1976d2 !important;
+}
+
+input:focus {
+    border-bottom: 1px solid #1976d2 !important;
+    box-shadow: 0 1px 0 0 #1976d2 !important;
+}
+
+.input-field input.valid {
+    border-bottom: 1px solid #1976d2 !important;
+    box-shadow: 0 1px 0 0 #1976d2 !important;
+}
+
+.input-field input.invalid {
+    border-bottom: 1px solid #1976d2 !important;
+    box-shadow: 0 1px 0 0 #1976d2 !important;
+}
+
+.input-field .prefix.active {
+    color: #1976d2 !important;
+}
+
 @media screen and (max-width: 400px) {
     h1 {
         font-size: 30px;
     }
+
     h5 {
         font-size: 20px;
     }
+
     #landing-btn-row {
         margin-bottom: 100px;
     }
+
     a.brand-logo {
         font-size: 15px;
     }

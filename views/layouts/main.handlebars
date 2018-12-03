@@ -5,20 +5,31 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {{!-- Favicon --}}
     <link rel="icon" type="image/png" href="/img/favicon.png">
+    {{!-- Stylesheets --}}
     <link rel="stylesheet" href="/styles/materialize.min.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.2/css/swiper.min.css">
     <link rel="stylesheet" href="/styles/styles.css">
-    <title>Code Learning Scraper</title>
+    {{!-- Scripts --}}
+    <script src="/js/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.2/js/swiper.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+    <script src="/js/materialize.min.js"></script>
+    <script src="/js/main.js"></script>
+    {{!-- Title --}}
+    <title>learnToCode.js</title>
 </head>
 
 <body class="blue lighten-3">
+
+    {{!-- Top Nav --}}
     <nav class="navbar blue lighten-1 z-depth-1">
         <div class="nav-wrapper z-depth-5">
             <div class="container">
-                <a class="brand-logo" href="/">Code Learning Scraper</a>
+                <a class="brand-logo" href="/">learnToCode.js</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li class="nav-item"><a style="max-height:64px;" href="/w3"><img src="/img/w3.png" width="25px" style="margin-top:20px"></a></li>
                     <li class="nav-item"><a style="max-height:64px;" href="/code-cademy"><img src="/img/code-cademy.png" width="25px" style="margin-top:20px"></a></li>
@@ -31,19 +42,18 @@
             </div>
         </div>
     </nav>
+
+    {{!-- Handlebars Content Injection --}}
     {{{body}}}
+
+    {{!-- Footer Nav --}}
     <nav id="nav-secondary" class="navbar blue lighten-1 z-depth-5">
         <div class="nav-wrapper">
             <div class="container center-align">
-                <a class="white-text" href="/">Code Learning Scraper © 2018 | Bryan Lee</a>            
+                <a class="white-text" href="/">learnToCode.js © 2018 | Created by Bryan Lee</a>            
             </div>
         </div>
     </nav>
-    <script src="/js/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.2/js/swiper.min.js"></script>
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
-    <script src="/js/materialize.min.js"></script>
-    <script src="/js/app.js"></script>
-</body>
 
+</body>
 </html>

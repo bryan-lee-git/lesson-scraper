@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    $(".modal").modal();
     $('#w3-table').DataTable();
     $('#coursera-table').DataTable();
     $('#medium-table').DataTable();

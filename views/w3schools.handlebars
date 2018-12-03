@@ -6,11 +6,14 @@
             <br />
             <a href="https://www.w3schools.com/" target="_blank"><img class="col s12 m8 offset-m2" src="/img/w3-swiper.png" alt=""></a>
         </div>
+        <br />
+        <br />
         <div class="col s12 m6">
             <table class="responsive-table centered highlight z-depth-1 blue lighten-5" id="w3-table">
                 <thead>
                     <th>Section</th>
-                    <th>Lesson (Click to Navigate to Lesson)</th>
+                    <th>Lesson</th>
+                    <th>Open</th>
                     <th>Notes</th>
                 </thead>
                 <tbody>
@@ -18,7 +21,8 @@
                         <tr>
                             <td>{{section}}</td>
                             <td><a href="{{link}}" target="_blank">{{title}}</a></td>
-                            <td><button class="btn">Notes</button></td>
+                            <td><a href="{{link}}" target="_blank"><button class="btn blue lighten-2">Open</button></a></td>
+                            <td data-id="{{_id}}" class="notes-btn modal-trigger" href="#notes"><button class="btn">Notes</button></td>
                         </tr>
                     {{/each}}
                 </tbody>
@@ -26,3 +30,5 @@
         </div>
     </div>
 </main>
+{{> Modal/notes-block}}
+<script src="/js/w3.js"></script>

@@ -6,21 +6,25 @@
             <br />
             <a href="https://www.youtube.com/" target="_blank"><img class="col s12 m8 offset-m2" src="/img/youtube-swiper.png" alt=""></a>
         </div>
+        <br />
+        <br />
         <div class="col s12 m6">
             <table class="responsive-table centered highlight z-depth-1 blue lighten-5" id="videos-table">
                 <thead>
-                    <th>Title (Click to Watch the Video)</th>
+                    <th>Title</th>
                     <th>Channel</th>
                     <th>Description</th>
+                    <th>Open</th>
                     <th>Notes</th>
                 </thead>
                 <tbody>
                     {{#each codeVideos}}
                         <tr>
-                            <td><a href="{{link}}" target="_blank">{{title}}</a></td>
+                            <td><a data-video="{{videoId}}" class="theater-btn modal-trigger" href="#theater">{{title}}</a></td>
                             <td>{{channel}}</a></td>
-                            <td>{{description}}</a></td>
-                            <td><button class="btn">Notes</button></td>
+                            <td>{{description}}</td>
+                            <td data-video="{{videoId}}" class="theater-btn modal-trigger" href="#theater"><button class="btn blue lighten-2">Open</button></a></td>
+                            <td data-id="{{_id}}" class="notes-btn modal-trigger" href="#notes"><button class="btn">Notes</button></td>
                         </tr>
                     {{/each}}
                 </tbody>
@@ -28,3 +32,6 @@
         </div>
     </div>
 </main>
+{{> Modal/notes-block}}
+{{> Modal/theater-block}}
+<script src="/js/codeVideos.js"></script>
