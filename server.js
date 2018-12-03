@@ -8,6 +8,7 @@ const cheerio = require("cheerio");
 const mongoose = require("mongoose");
 const app = express();
 const db = require("./models");
+const PORT = process.env.PORT || 3000;
 
 // Express + Handlebars Configuration
 // =======
@@ -467,6 +468,6 @@ app.post("/code-videos/:id", (req, res) => {
 /* -/-/-/-/-/-/-/-/-/-/-/-/- */
 
 // Listen on port 3000
-app.listen(3000, () => {
-  console.log("App running on port 3000!");
+app.listen(PORT, () => {
+  console.log(`App running on port ${PORT}!`);
 });
